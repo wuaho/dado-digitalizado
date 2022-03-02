@@ -18,5 +18,10 @@ module Dado
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.test_framework :rspec
+      g.helper false
+      g.jbuilder false
+    end
   end
 end
