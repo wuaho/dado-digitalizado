@@ -10,4 +10,7 @@ class User < ApplicationRecord
             presence: true,
             format: { with: /\A\d{9}\z/,
                       message: 'The phone number does not have a valid format' }
+  def fullname
+    "#{name} #{surname}".strip
+  end
 end

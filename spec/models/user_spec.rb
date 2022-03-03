@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject { described_class.new(email: 'test@test.com', phone: '655444333') }
+  subject { described_class.new(name: 'Paco', surname: 'Perez', email: 'test@test.com', phone: '655444333') }
 
   it 'should pass when valid' do
     expect(subject).to be_valid
@@ -34,6 +34,19 @@ RSpec.describe User, type: :model do
         subject.phone = '691255488102782'
         expect(subject).to_not be_valid
       end
+    end
+  end
+  describe '#fullname' do
+    it 'returns the user full name' do
+      expect(subject.fullname).to eql('Paco Perez')
+    end
+    it 'returns only the name' do
+      subject.surname = nil
+      expect(subject.fullname).to eql('Paco')
+    end
+    it 'returns only the surname' do
+      subject.name = nil
+      expect(subject.fullname).to eql('Perez')
     end
   end
 end
