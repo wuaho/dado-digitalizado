@@ -51,16 +51,10 @@ RSpec.describe User, type: :model do
       expect(subject.fullname).to eql('Perez')
     end
   end
-  describe '#age' do
+  describe '#underage?' do
     before(:all) do
       travel_to Date.new(2022, 3, 4)
     end
-
-    it 'returns today\'s user age' do
-      expect(subject.age).to eql(20)
-    end
-  end
-  describe '#underage?' do
     it 'returns false when age >= 18' do
       expect(subject.underage?).to be false
     end
