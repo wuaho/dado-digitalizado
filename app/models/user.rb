@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  enum rol: %i[admin council member non-enrolled banned]
+  enum rol: { admin: 0, council: 1, member: 2, non_enrolled: 3, banned: 4 }
   validates :rol,
             presence: true,
-            inclusion: { in: %w[admin council member non-enrolled banned] }
+            inclusion: { in: %w[admin council member non_enrolled banned] }
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false,
