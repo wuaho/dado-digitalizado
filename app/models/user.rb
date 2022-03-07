@@ -10,12 +10,14 @@ class User < ApplicationRecord
             presence: true,
             format: { with: /\A\d{9}\z/,
                       message: 'The phone number does not have a valid format' }
+
+  LEGAL_AGE = 18
   def fullname
     "#{name} #{surname}".strip
   end
 
   def underage?
-    age < 18
+    age < LEGAL_AGE
   end
 
   private
