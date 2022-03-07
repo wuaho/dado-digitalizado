@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   subject do
-    described_class.new(name: 'Paco', surname: 'Perez',
-                        email: 'test@test.com', phone: '655444333', birthdate: Date.new(2001, 6, 17))
+    described_class.new(name: 'Paco', surname: 'Perez', email: 'test@test.com',
+                        phone: '655444333', birthdate: Date.new(2001, 6, 17), rol: 'council')
   end
 
   describe 'validations' do
