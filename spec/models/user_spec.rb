@@ -1,40 +1,54 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  subject do
-    described_class.new(name: 'Paco', surname: 'Perez',
-                        email: 'test@test.com', phone: '655444333', birthdate: Date.new(2001, 6, 17))
+  let(:valid_user_attributes) do
+    {
+      birthdate: Date.new(2001, 6, 17),
+      email: 'test@test.com',
+      name: 'Paco',
+      phone: '655444333',
+      surname: 'Perez'
+    }
   end
+  subject { described_class.new(valid_user_attributes) }
 
   describe 'validations' do
     it 'pass when all parameters are valid' do
       expect(subject).to be_valid
     end
-    describe 'email' do
-      it 'is present' do
+    context 'when validating the email' do
+      it 'returns false when is empty' do
         subject.email = nil
         expect(subject).to_not be_valid
       end
-      it 'doesn\'t have undesired length' do
-        subject.email = '@a'
-        expect(subject).to_not be_valid
-        subject.email = '3OrpKCF8wp1Vg6iHLBaNXpUBinQLXPl9qnjR9b4KOGSfHaQlKSoxaCHCGeoIrjy7j0mUDQnfxLV11oXxEfq3iTbdQZymMos2QAbzf7zvxAuQyQOHfEgOxOeB1Qi6FkFKypE0zmoLEqNsmftyeoSAsW0EXlT6YxnhKtFMl0vYLmxRIpDMuLwlzwieNryy2GIWeCDYCMgXsNsFjmooqQmwyaKCFlZ1mc29VnpZteqFAhfc8ULWFkWtGhGb2IG3TtA
-        @test.com'
-        expect(subject).to_not be_valid
-      end
-      it 'has a valid format' do
+      it 'returns false when it has invalid format' do
         subject.email = 'thisIsNotAnEmail@what@what.com'
         expect(subject).to_not be_valid
       end
+      context 'when checking its length' do
+        it 'returns false when is less than 3' do
+          subject.email = '@a'
+          expect(subject).to_not be_valid
+        end
+        it 'returns false when is longer than 254' do
+          subject.email = "#{'a' * 254}@test.com"
+          expect(subject).to_not be_valid
+        end
+      end
     end
-    describe 'phone' do
-      it 'is present' do
+    context 'when validating the phone' do
+      it 'returns false when is empty' do
         subject.phone = nil
         expect(subject).to_not be_valid
       end
-      it 'has valid format' do
+      it 'returns false when it has invalid format' do
         subject.phone = '691255488102782'
         expect(subject).to_not be_valid
+      end
+    end
+    context 'role' do
+      it 'is default to non_enrolled when not declared' do
+        expect(subject.role).to eql('non_enrolled')
       end
     end
   end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  enum role: { admin: 0, non_enrolled: 1, council: 2, member: 3, banned: 5 }, _default: :non_enrolled
+
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false,
