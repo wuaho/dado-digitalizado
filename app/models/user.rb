@@ -15,7 +15,8 @@ class User < ApplicationRecord
   validates :phone,
             format: { with: /\A\d{9}\z/,
                       message: 'The phone number does not have a valid format' },
-            allow_nil: true
+            allow_nil: true,
+            allow_blank: true
 
   LEGAL_AGE = 18
   def fullname

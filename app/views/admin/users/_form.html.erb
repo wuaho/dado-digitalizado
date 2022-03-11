@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :password, style: "display: block" %>
-    <%= form.text_field :password %>
+    <%= form.password_field :password %>
   </div>
 
   <div>
@@ -27,8 +27,13 @@
   </div>
 
   <div>
+    <%= form.label :nickname, style: "display: block" %>
+    <%= form.text_field :nickname %>
+  </div>
+
+  <div>
     <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.email_field :email %>
   </div>
 
   <div>
@@ -44,6 +49,11 @@
   <div>
     <%= form.label :birthdate, style: "display: block" %>
     <%= form.date_field :birthdate %>
+  </div>
+
+  <div>
+    <%= form.label :role, style: "display: block" %>
+    <%= form.select :role, ["admin","non_enrolled","council", "member","banned"] %>
   </div>
 
   <div>

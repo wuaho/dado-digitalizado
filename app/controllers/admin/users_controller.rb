@@ -47,7 +47,7 @@ module Admin
     # Only allow a list of trusted parameters through.
     def user_params
       # TO-DO I should change this to only the parameters that the admin is able to modify
-      params.require(:user).permit(:name, :password, :surname, :email, :phone, :address, :birthdate)
+      params.require(:user).permit(:name, :password, :surname, :email, :phone, :address, :birthdate, :nickname, :role)
     end
 
     def require_admin
