@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # The controllers that will be called are the ones in app/controllers/admin directory
-    resources :users, except: %i[new create]
+    resources :users, except: %i[new create] do
+      patch 'ban', on: :member
+    end
   end
 
   # This next line is not even necessary because all this work is managed by devise.
