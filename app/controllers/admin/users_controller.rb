@@ -2,7 +2,7 @@ module Admin
   class UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :require_admin
-    before_action :set_user, only: %i[show edit update destroy]
+    before_action :set_user, only: %i[show edit update destroy ban]
     # GET /users or /users.json
     def index
       @users = User.all
@@ -33,6 +33,16 @@ module Admin
 
       respond_to do |format|
         format.html { redirect_to admin_users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    end
+
+    # PATCH /users/1/ban
+    def ban
+      @user.ban!
+
+      respond_to do |format|
+        format.html { redirect_to admin_users_url, notice: 'User was successfully banned.' }
         format.json { head :no_content }
       end
     end

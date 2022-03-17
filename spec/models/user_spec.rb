@@ -78,4 +78,10 @@ RSpec.describe User, type: :model do
       expect(subject.underage?).to be true
     end
   end
+  describe '#ban!' do
+    it 'changes the user role to banned' do
+      subject.ban!
+      expect(subject.role).to eql('banned')
+    end
+  end
 end

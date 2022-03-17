@@ -27,6 +27,10 @@ class User < ApplicationRecord
     age < LEGAL_AGE
   end
 
+  def ban!
+    banned!
+  end
+
   private
 
   def age

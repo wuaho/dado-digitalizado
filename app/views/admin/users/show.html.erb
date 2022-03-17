@@ -3,8 +3,15 @@
 <%= render @user %>
 
 <div>
-  <%= link_to "Edit this user", edit_admin_user_path(@user) %> |
+  | <%= link_to "Edit this user", edit_admin_user_path(@user) %> |
+  <%= link_to "Ban this user", ban_admin_user_path, data: {
+    turbo_method: :patch,
+    turbo_confirm: "Are you sure you want to ban this user?"
+    } %> |
+  <%= link_to "Destroy this user", @admin_user, data: {
+    turbo_method: :delete,
+    turbo_confirm: "Are you sure you want to delete this user?"
+    } %> |
+    <br>
   <%= link_to "Back to users", admin_users_path %>
-
-  <%= button_to "Destroy this user", @admin_user, method: :delete %>
 </div>
