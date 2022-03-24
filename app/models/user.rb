@@ -31,7 +31,19 @@ class User < ApplicationRecord
     banned!
   end
 
+  def active_for_authentication?
+    super && active?
+  end
+
+  def inactive_message
+    active? ? super : :locked
+  end
+
   private
+
+  def active?
+    !banned?
+  end
 
   def age
     today = Date.today
