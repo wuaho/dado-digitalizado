@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_27_184834) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_131410) do
+  create_table "borrowings", force: :cascade do |t|
+    t.date "starts_on"
+    t.date "expires_on"
+    t.integer "user_id"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_borrowings_on_game_id"
+    t.index ["user_id"], name: "index_borrowings_on_user_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.text "description"

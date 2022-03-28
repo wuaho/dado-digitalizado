@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :borrowings
   root 'home#index'
   resources :games
   devise_for :users

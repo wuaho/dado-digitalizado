@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   enum role: { admin: 0, non_enrolled: 1, council: 2, member: 3, banned: 5 }, _default: :non_enrolled
 
+  has_many :borrowings
+  has_many :games, through: :borrowings
+
   validates :email,
             presence: true,
             uniqueness: { case_sensitive: false,
