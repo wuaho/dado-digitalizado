@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :borrowings
   root 'home#index'
   resources :games
   devise_for :users
 
   namespace :admin do
     # The controllers that will be called are the ones in app/controllers/admin directory
+    resources :borrowings
     resources :users, except: %i[new create] do
       patch 'ban', on: :member
     end
