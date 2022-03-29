@@ -6,9 +6,9 @@
   <% @borrowings.each do |borrowing| %>
     <%= render borrowing %>
     <p>
-      <%= link_to "Show this borrowing", borrowing %>
+      <%= link_to "Show this borrowing", admin_borrowing_url(borrowing) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New borrowing", new_borrowing_path %>
+<%= link_to "New borrowing", new_admin_borrowing_path %>
