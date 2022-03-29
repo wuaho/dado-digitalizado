@@ -3,8 +3,9 @@
 <%= render @game %>
 
 <div>
-  <%= link_to "Edit this game", edit_game_path(@game) %> |
+  <% if Borrower.new(current_user,@game).user_can_borrow_game? %>
+    <%= button_to "Borrow this game", @game, method: :post %>
+  <%end%>
   <%= link_to "Back to games", games_path %>
 
-  <%= button_to "Destroy this game", @game, method: :delete %>
 </div>

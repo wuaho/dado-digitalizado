@@ -1,4 +1,4 @@
-<%= form_with(model: game) do |form| %>
+<%= form_with(model: [:admin, game]) do |form| %>
   <% if game.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
@@ -22,8 +22,13 @@
   </div>
 
   <div>
-    <%= form.label :number_of_players, style: "display: block" %>
-    <%= form.number_field :number_of_players %>
+    <%= form.label :min_players, style: "display: block" %>
+    <%= form.number_field :min_players %>
+  </div>
+  
+  <div>
+    <%= form.label :max_players, style: "display: block" %>
+    <%= form.number_field :max_players %>
   </div>
 
   <div>

@@ -4,9 +4,11 @@
 
 <div id="games">
   <% @games.each do |game| %>
+    <%= render game %>
     <p>
-      <%= link_to game.name, game %>
+      <%= link_to "Show this game", admin_game_url(game) %>
     </p>
   <% end %>
 </div>
 
+<%= link_to "New game", new_admin_game_path %>
