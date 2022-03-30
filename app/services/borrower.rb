@@ -21,10 +21,10 @@ class Borrower
   end
 
   def user_has_no_active_borrowing?
-    true
+    user.borrowings.active.empty?
   end
 
   def game_is_available?
-    true
+    game.borrowings.active.size < game.stock
   end
 end
