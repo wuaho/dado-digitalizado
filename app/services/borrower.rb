@@ -10,6 +10,8 @@ class Borrower
     user_not_banned? && user_is_member? && user_has_no_active_borrowing? && game_is_available?
   end
 
+  private
+
   def user_not_banned?
     !user.banned?
   end
