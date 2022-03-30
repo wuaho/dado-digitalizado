@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>My borrowings</h1>
+
+<div id="borrowings">
+  <% @borrowings.each do |borrowing| %>
+    <div id="<%= dom_id borrowing %>">
+
+      <p>
+        <strong>Game:</strong>
+        <%= borrowing.game.name %> 
+      </p>
+
+      <p>
+        <strong>Started on:</strong>
+        <%= borrowing.starts_on %>
+      </p>
+      
+    </div>
+    <p>
+      <%= link_to "Show this borrowing", borrowing_url(borrowing) %>
+    </p>
+  <% end %>
+</div>
+

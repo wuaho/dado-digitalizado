@@ -3,9 +3,8 @@
 <%= render @game %>
 
 <div>
-  <% if Borrower.new(current_user, @game).user_can_borrow_game? %>
-    <%= button_to "Borrow this game", @game, method: :post %>
+  <% if Borrower.new(@user, @game).user_can_borrow_game? %>
+    <%= link_to "Borrow this game", new_borrowing_path(game_id:@game.id) %>
   <%end%>
   <%= link_to "Back to games", games_path %>
-
 </div>
