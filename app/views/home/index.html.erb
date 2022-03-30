@@ -1,6 +1,9 @@
-<h1>Dado Plateado</h1>
 <% if user_signed_in? %>
-  <%= link_to 'Users', admin_users_path %>
+<h3>Admin link</h3>
   <%= link_to 'Games', games_path %> 
   <%= link_to 'Borrowings', admin_borrowings_path %> 
+  <%= link_to 'Users', admin_users_path %>
+<h3>User links</h3>
+  <%= link_to 'Games', games_path %> 
+  <%= link_to 'Borrowings', borrowings_path %> 
 <% end %>
