@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'home#index'
   resources :games, only: %i[index show]
+  resources :borrowings, only: %i[new create index show]
   devise_for :users
 
   namespace :admin do
     # The controllers that will be called are the ones in app/controllers/admin directory
-
 
     resources :games
     resources :borrowings
