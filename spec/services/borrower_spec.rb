@@ -24,13 +24,13 @@ RSpec.describe Borrower do
       end
     end
     context 'when user already has an active borrowing' do
-      create(:borrowing)
+      before { create(:borrowing) }
       it 'returns false' do
         expect(subject.user_can_borrow_game?).to be false
       end
     end
     context 'when game is not available' do
-      create(:borrowing)
+      before { create(:borrowing) }
       it 'returns false' do
         expect(subject.user_can_borrow_game?).to be false
       end
