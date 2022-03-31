@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  resources :memberships
   resources :games, only: %i[index show]
   resources :borrowings, only: %i[new create index show]
   devise_for :users

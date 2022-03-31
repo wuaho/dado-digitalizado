@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :borrowings
   has_many :games, through: :borrowings
+  has_one :membership, dependent: :destroy
 
   validates :email,
             presence: true,
