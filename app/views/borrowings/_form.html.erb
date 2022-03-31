@@ -16,16 +16,13 @@
     <%= form.select :game_id, Game.all.map{|s| [s.name,s.id]} %>
   </div>
   <div>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-  </div>
-  <div>
     <%= form.label :starts_on, style: "display: block" %>
     <%= form.date_field :starts_on, value: Date.today %>
   </div>
 
   <div>
     <%= form.label :expires_on, style: "display: block" %>
-    <%= form.date_field :expires_on, value: Date.today+7 %>
+    <%= form.date_field :expires_on, value: Date.today + Borrowing::PERIOD %>
   </div>
 
   <div>

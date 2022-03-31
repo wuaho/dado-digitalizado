@@ -16,7 +16,7 @@ class BorrowingsController < ApplicationController
   def create
     # TO-DO user id is automatically introduced in the next line as current_user.id and it doesnt come
     # from the form
-    @borrowing = Borrowing.new(borrowing_params)
+    @borrowing = Borrowing.new(borrowing_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @borrowing.save
@@ -36,6 +36,6 @@ class BorrowingsController < ApplicationController
   end
 
   def borrowing_params
-    params.require(:borrowing).permit(:starts_on, :expires_on, :game_id, :user_id)
+    params.require(:borrowing).permit(:starts_on, :expires_on,:game_id)
   end
 end
