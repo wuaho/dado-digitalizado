@@ -62,6 +62,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  #Uncomment this if you dont want to time travel
+  # Uncomment this if you dont want to time travel
   config.include ActiveSupport::Testing::TimeHelpers
 end

@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-# This line adds too many libraries that Im not really using, below are the requires 1 by 1 that 
+# This line adds too many libraries that Im not really using, below are the requires 1 by 1 that
 # I really need. Check out what rails/all.rb is currently expanded to:
 # https://github.com/rails/rails/blob/master/railties/lib/rails/all.rb
 
@@ -36,7 +36,8 @@ module Dado
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
     config.generators do |g|
-      g.test_framework :rspec
+      g.test_framework :rspec,
+                       views_specs: false
       g.helper false
       g.jbuilder false
     end
