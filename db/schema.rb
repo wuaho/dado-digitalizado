@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_31_091728) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_31_100746) do
   create_table "borrowings", force: :cascade do |t|
     t.date "starts_on"
     t.date "expires_on"
@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_091728) do
     t.boolean "active"
     t.date "started_on"
     t.date "expires_on"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_memberships_on_user_id"
