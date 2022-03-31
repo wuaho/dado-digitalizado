@@ -10,8 +10,7 @@ class BorrowingsController < ApplicationController
 
   def new
     @game_id = params[:game_id]
-    @borrowing = Borrowing.new(game_id: @game_id, user_id: current_user.id, starts_on: Date.today,
-                               expires_on: Date.today + 7)
+    @borrowing = Borrowing.new(game_id: @game_id)
   end
 
   def create
