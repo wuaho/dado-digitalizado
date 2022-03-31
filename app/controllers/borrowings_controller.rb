@@ -17,6 +17,7 @@ class BorrowingsController < ApplicationController
   def create
     @game_id = params.dig(:borrowing, :game_id)
     validate_borrow!(@game_id)
+    return if performed?
 
     @borrowing = Borrowing.new(borrowing_params.merge(user_id: current_user.id))
     respond_to do |format|
