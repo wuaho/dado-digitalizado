@@ -14,6 +14,8 @@ class BorrowingsController < ApplicationController
   end
 
   def create
+    # TO-DO user id is automatically introduced in the next line as current_user.id and it doesnt come
+    # from the form
     @borrowing = Borrowing.new(borrowing_params)
 
     respond_to do |format|
