@@ -1,2 +1,0 @@
-class GameTagsController < ApplicationController
-end
