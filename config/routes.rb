@@ -15,11 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # This next line is not even necessary because all this work is managed by devise.
-  # resources :users, except: %i[new index create] # Here I should remove GET /users, GET users/new, POST /users
-
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # Error handling
+  get 'public/403', to: 'errors#error403', as: 'error403'
+  get 'public/404', to: 'errors#error404', as: 'error404'
+  get 'public/422', to: 'errors#error422', as: 'error422'
+  get 'public/500', to: 'errors#error500', as: 'error500'
 end

@@ -37,7 +37,7 @@ class BorrowingsController < ApplicationController
     @game = Game.find(game_id)
     return if Borrower.new(current_user, @game).user_can_borrow_game?
 
-    redirect_to(game_url(@game), alert: 'Forbidden')
+    redirect_to error403_path
   end
 
   def set_borrowing
