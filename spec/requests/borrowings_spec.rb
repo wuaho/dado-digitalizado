@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'support/controller_macros'
 RSpec.describe '/borrowings', type: :request do
   before(:each) do
     @user = create(:user)
