@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_04_151422) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_04_155445) do
   create_table "borrowings", force: :cascade do |t|
     t.date "starts_on"
     t.date "expires_on"
@@ -33,6 +33,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_151422) do
     t.datetime "updated_at", null: false
     t.integer "min_players", default: 1
     t.integer "max_players", default: 1
+  end
+
+  create_table "games_tags", id: false, force: :cascade do |t|
+    t.integer "game_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["game_id"], name: "index_games_tags_on_game_id"
+    t.index ["tag_id"], name: "index_games_tags_on_tag_id"
   end
 
   create_table "memberships", force: :cascade do |t|
