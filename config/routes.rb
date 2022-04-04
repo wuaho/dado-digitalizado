@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :game_tags
+  resources :tags
   root 'home#index'
   resources :memberships
   resources :games, only: %i[index show]

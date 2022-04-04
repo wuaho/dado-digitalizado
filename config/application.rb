@@ -38,6 +38,7 @@ module Dado
     config.generators do |g|
       g.test_framework :rspec,
                        views_specs: false
+      g.views_specs false
       g.helper false
       g.jbuilder false
     end
