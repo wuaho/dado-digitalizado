@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
 <h3>Admin links</h3>
-  <%= link_to 'Games', games_path %> 
+  <%= link_to 'Games', admin_games_path %> 
+  <%= link_to 'Tags', admin_tags_path %> 
   <%= link_to 'Borrowings', admin_borrowings_path %> 
   <%= link_to 'Users', admin_users_path %>
 <h3>User links</h3>
