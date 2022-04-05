@@ -52,6 +52,11 @@
   </div>
 
   <div>
+    <%= form.label :tags, style: "display: block" %>
+    <%= form.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

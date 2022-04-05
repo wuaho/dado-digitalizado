@@ -4,23 +4,18 @@ module Admin
     before_action :require_admin
     before_action :set_game, only: %i[show edit update destroy]
 
-    # GET /games or /games.json
     def index
       @games = Game.all
     end
 
-    # GET /games/1 or /games/1.json
     def show; end
 
-    # GET /games/new
     def new
       @game = Game.new
     end
 
-    # GET /games/1/edit
     def edit; end
 
-    # POST /games or /games.json
     def create
       @game = Game.new(game_params)
 
@@ -35,7 +30,6 @@ module Admin
       end
     end
 
-    # PATCH/PUT /games/1 or /games/1.json
     def update
       respond_to do |format|
         if @game.update(game_params)
@@ -48,7 +42,6 @@ module Admin
       end
     end
 
-    # DELETE /games/1 or /games/1.json
     def destroy
       @game.destroy
 
@@ -60,14 +53,13 @@ module Admin
 
     private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def game_params
-      params.require(:game).permit(:name, :description, :min_players, :max_players, :language, :min_age, :brand, :stock)
+      params.require(:game).permit(:name, :description, :min_players,
+                                   :max_players, :language, :min_age, :brand, :stock, tag_ids: [])
     end
 
     def require_admin
