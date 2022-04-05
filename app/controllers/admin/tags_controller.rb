@@ -64,7 +64,7 @@ module Admin
     def require_admin
       unless current_user.admin?
         flash[:alert] = 'Forbidden'
-        redirect_to root_path # halts request cycle
+        redirect_to root_path
       end
     end
   end
