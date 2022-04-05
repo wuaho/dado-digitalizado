@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_04_155445) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_05_071207) do
   create_table "borrowings", force: :cascade do |t|
     t.date "starts_on"
     t.date "expires_on"
@@ -53,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_155445) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
