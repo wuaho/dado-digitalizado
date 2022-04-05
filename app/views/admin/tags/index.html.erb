@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Tags</h1>
+
+<div id="tags">
+  <ul>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= link_to tag.name, admin_tag_url(tag) %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<%= link_to "New tag", new_admin_tag_path %>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :tags
   root 'home#index'
   resources :memberships
   resources :games, only: %i[index show]
@@ -7,9 +6,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    # The controllers that will be called are the ones in app/controllers/admin directory
-
     resources :games
+    resources :tags
     resources :borrowings
     resources :users, except: %i[new create] do
       patch 'ban', on: :member
