@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_05_071207) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_06_072506) do
   create_table "borrowings", force: :cascade do |t|
     t.date "starts_on"
     t.date "expires_on"
@@ -52,6 +52,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_071207) do
     t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "description"
+    t.integer "rating", null: false
+    t.integer "user_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_reviews_on_game_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -79,4 +91,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_071207) do
   end
 
   add_foreign_key "memberships", "users"
+  add_foreign_key "reviews", "games"
+  add_foreign_key "reviews", "users"
 end
