@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :tags
     resources :borrowings
     resources :games do
-      resources :reviews
+      resources :reviews, except: %i[new create]
     end
     resources :users, except: %i[new create] do
       patch 'ban', on: :member
