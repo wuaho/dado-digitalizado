@@ -84,4 +84,14 @@ RSpec.describe User, type: :model do
       expect(subject.role).to eql('banned')
     end
   end
+  describe '#ever_borrowed?(game)' do
+    let(:some_game) { build(:game) }
+    it 'returns false if the user has never borrowed the game' do
+      expect(subject.ever_borrowed?(some_game)).to be false
+    end
+    it 'returns true if the user has borrowed the game before' do
+      create(:borrowing, user: subject, game: some_game)
+      expect(subject.ever_borrowed?(some_game)).to be true
+    end
+  end
 end

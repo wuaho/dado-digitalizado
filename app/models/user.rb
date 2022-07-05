@@ -44,6 +44,10 @@ class User < ApplicationRecord
     active? ? super : :locked
   end
 
+  def ever_borrowed?(game)
+    borrowings.where(game:).any?
+  end
+
   private
 
   def active?
@@ -53,7 +57,11 @@ class User < ApplicationRecord
   def age
     today = Date.today
 
-    today.year - birthdate.year - (((today.month > birthdate.month) ||
-    today.month == birthdate.month && today.day >= birthdate.day) ? 0 : 1)
+    today.year - birthdate.year - (if (today.month > birthdate.month) ||
+    today.month == birthdate.month && today.day >= birthdate.day
+                                     0
+                                   else
+                                     1
+                                   end)
   end
 end
