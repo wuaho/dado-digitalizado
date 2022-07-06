@@ -48,6 +48,10 @@ class User < ApplicationRecord
     borrowings.where(game:).any?
   end
 
+  def ever_reviewed?(game)
+    reviews.where(game:).any?
+  end
+
   private
 
   def active?
