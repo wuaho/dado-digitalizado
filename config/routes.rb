@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
   root 'home#index'
   resources :memberships
-  resources :games, only: %i[index show]
+  resources :games, only: %i[index show] do
+    resources :reviews
+  end
   resources :borrowings, only: %i[new create index show]
   devise_for :users
 
   namespace :admin do
-    resources :games
     resources :tags
     resources :borrowings
+    resources :games do
+      resources :reviews, except: %i[new create]
+    end
     resources :users, except: %i[new create] do
       patch 'ban', on: :member
     end

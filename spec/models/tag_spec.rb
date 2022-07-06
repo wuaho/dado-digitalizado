@@ -8,7 +8,7 @@ RSpec.describe Tag, type: :model do
   end
 
   subject { described_class.new(valid_tag_attributes) }
-  
+
   describe 'validations' do 
     it 'pass when all parameters are valid' do
       expect(subject).to be_valid

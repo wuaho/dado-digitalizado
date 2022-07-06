@@ -21,10 +21,6 @@ RSpec.describe '/borrowings', type: :request do
     }
   end
 
-  let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
-  end
-
   describe 'GET /index' do
     it 'renders a successful response' do
       Borrowing.create! valid_model_attributes
@@ -62,17 +58,21 @@ RSpec.describe '/borrowings', type: :request do
       end
     end
 
-    context 'with invalid parameters' do
-      it 'does not create a new Borrowing' do
-        expect do
-          post borrowings_url, params: { borrowing: invalid_attributes }
-        end.to change(Borrowing, :count).by(0)
-      end
+    # Wish: test request with invalid_attributes
+    # let(:invalid_attributes) do
+    #   skip('Add a hash of attributes invalid for your model')
+    # end
+    # context 'with invalid parameters' do
+    #   it 'does not create a new Borrowing' do
+    #     expect do
+    #       post borrowings_url, params: { borrowing: invalid_attributes }
+    #     end.to change(Borrowing, :count).by(0)
+    #   end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post borrowings_url, params: { borrowing: invalid_attributes }
-        expect(response).to be_successful
-      end
-    end
+    #   it "renders a successful response (i.e. to display the 'new' template)" do
+    #     post borrowings_url, params: { borrowing: invalid_attributes }
+    #     expect(response).to be_successful
+    #   end
+    # end
   end
 end
